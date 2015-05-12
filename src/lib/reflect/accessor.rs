@@ -162,7 +162,7 @@ struct FieldAccessorImpl<M> {
 
 impl<M : Message + 'static> FieldAccessor for FieldAccessorImpl<M> {
     fn name_generic(&self) -> &'static str {
-        self.name
+        if self.name == "field_type" { "type" } else { self.name }
     }
 
     fn has_field_generic(&self, m: &Message) -> bool {
